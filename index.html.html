@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Actividad Fundamental 06 - Programacion Web -->
+    <!-- Alumna: Ashlee Alejandra Doria Martinez -->
+    <!-- Matricula: 2222792 -->
+    <!-- Carrera: Ingenieria en Administracion de Sistemas (IAS) - FIME UANL -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Fundamental 06 - Practicas Profesionales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #edf4fa;
+            color: #243342;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: auto;
+        }
+
+        /* 1. Encabezado en Azul */
+        header {
+            background: #0f4c81;
+            padding: 1.2rem 3rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1550px;
+            margin: 0 auto;
+        }
+
+        .marca-portal {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-fime-header {
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .logo-fime-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .titulo-marca h1 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .titulo-marca p {
+            font-size: 0.88rem;
+            color: #d2e4f5;
+            font-weight: bold;
+        }
+
+        .btn-inicio-top {
+            display: inline-block;
+            padding: 9px 20px;
+            background-color: #ffffff;
+            color: #0f4c81;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .btn-inicio-top:hover {
+            background-color: #d6e8f8;
+        }
+
+        /* 2. Seccion Hero / Bienvenida */
+        .seccion-hero {
+            text-align: center;
+            padding: 2.2rem 1.5rem 1.2rem;
+        }
+
+        .seccion-hero h2 {
+            font-size: 2.1rem;
+            color: #0d3b66;
+            margin-bottom: 8px;
+        }
+
+        .seccion-hero p {
+            color: #516375;
+            font-size: 1rem;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        /* 3. Contenedor principal de 4 cuadros en una sola linea */
+        main {
+            padding: 1.2rem 2.5rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .fila-empresas {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 22px;
+            width: 100%;
+        }
+
+        .tarjeta-empresa {
+            flex: 1 1 0;
+            min-width: 270px;
+            background: #ffffff;
+            border-radius: 20px;
+            border: 2px solid #b8d5ed;
+            padding: 1.8rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(15, 76, 129, 0.12);
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .tarjeta-empresa:hover {
+            transform: translateY(-5px);
+            border-color: #0f4c81;
+        }
+
+        .etiqueta-tipo {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #e3effa;
+            color: #0a3d6b;
+            font-size: 0.76rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+
+        .contenedor-imagen {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contenedor-imagen img {
+            max-width: 170px;
+            max-height: 105px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .info-empresa h3 {
+            font-size: 1.25rem;
+            color: #1b2e40;
+            margin-bottom: 10px;
+        }
+
+        .info-empresa p {
+            font-size: 0.9rem;
+            color: #516375;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            min-height: 54px;
+        }
+
+        .acciones-empresa {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-alerta {
+            width: 100%;
+            padding: 11px;
+            background: #0f4c81;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-alerta:hover {
+            background: #092f52;
+        }
+
+        .btn-enlace {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #0f4c81;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.88rem;
+            border: 2px solid #5d93c4;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .btn-enlace:hover {
+            background-color: #e3effa;
+        }
+
+        /* 4. Boton volver flotante */
+        .btn-volver-fijo {
+            position: fixed;
+            bottom: 14px;
+            left: 20px;
+            background: #0f4c81;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 100;
+        }
+
+        .btn-volver-fijo:hover {
+            background: #092f52;
+        }
+
+        /* 5. Pie de pagina */
+        footer {
+            margin-top: auto;
+            background: #0f4c81;
+            text-align: center;
+            padding: 1.3rem;
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Encabezado con datos -->
+    <header>
+        <nav>
+            <div class="marca-portal">
+                <div class="logo-fime-header">
+                    <img src="img/fime.png" alt="Logo FIME" onerror="this.src='https://www.fime.uanl.mx/wp-content/uploads/2021/04/cropped-fime-logo-32x32.png'">
+                </div>
+                <div class="titulo-marca">
+                    <h1>Actividad Fundamental 06: Practicas Profesionales</h1>
+                    <p>Ashlee Alejandra Doria Martinez - 2222792</p>
+                </div>
+            </div>
+            <a href="index.html" class="btn-inicio-top">Pagina Principal</a>
+        </nav>
+    </header>
+
+    <!-- 2. Titulo central -->
+    <section class="seccion-hero">
+        <h2>Opciones de Practicas Profesionales para IAS</h2>
+        <p>Selecciona una opcion para revisar los perfiles en tecnologias de informacion, procesos y sistemas, o visita la bolsa oficial de vacantes.</p>
+    </section>
+
+    <!-- 3. Fila de 4 tarjetas a lo largo de la pantalla -->
+    <main>
+        <section class="fila-empresas">
+
+            <!-- Cuadro 1: Arca Continental -->
+            <article class="tarjeta-empresa">
+                <span class="etiqueta-tipo">Procesos y TI</span>
+                <figure class="contenedor-imagen">
+                    <img src="img/arcacontal.png" alt="Arca Continental" onerror="this.src='https://placehold.co/170x105/ffffff/0f4c81?text=Arca+Continental'">
+                </figure>
+                <div class="info-empresa">
+                    <h3>Arca Continental</h3>
+                    <p>Coordinacion de plataformas TI, procesos de cadena de suministro y gestion de seguridad de la informacion.</p>
+                </div>
+                <div class="acciones-empresa">
+                    <button type="button" class="btn-alerta" onclick="lanzarAlerta('Arca Continental - Tecnologias de Informacion', 'Perfil IAS:\n- Gestion de plataformas y cadena de suministro TI\n- Seguridad de la informacion y documentacion de procesos\n- Ubicacion: Corporativo Monterrey / Bebidas Mundiales NL.')">
+                        Revisar Requisitos
+                    </button>
+                    <a href="https://www.arcacontal.com/es/empleo/trabaja-en-arca-continental" target="_blank" rel="noopener noreferrer" class="btn-enlace">
+                        Ir al Portal Oficial
+                    </a>
+                </div>
+            </article>
+
+            <!-- Cuadro 2: Whirlpool -->
+            <article class="tarjeta-empresa">
+                <span class="etiqueta-tipo">Sistemas y Datos</span>
+                <figure class="contenedor-imagen">
+                    <img src="img/whirlpool.png" alt="Whirlpool" onerror="this.src='https://placehold.co/170x105/ffffff/0f4c81?text=Whirlpool'">
+                </figure>
+                <div class="info-empresa">
+                    <h3>Whirlpool</h3>
+                    <p>Analisis de operaciones, soporte en procurement estrategico y automatizacion de plataformas de ingenieria.</p>
+                </div>
+                <div class="acciones-empresa">
+                    <button type="button" class="btn-alerta" onclick="lanzarAlerta('Whirlpool Mexico - Area TI / Ingenieria', 'Perfil IAS:\n- Analisis de sistemas, compras estrategicas y datos\n- Automatizacion de flujos de informacion y soporte operativo\n- Ubicacion: Planta y Centro de Tecnologia en Apodaca, NL.')">
+                        Revisar Requisitos
+                    </button>
+                    <a href="https://www.whirlpoolcareers.com/work-with-us/trabaja-con-nosotros-en-mexico.html" target="_blank" rel="noopener noreferrer" class="btn-enlace">
+                        Ir al Portal Oficial
+                    </a>
+                </div>
+            </article>
+
+            <!-- Cuadro 3: Howmet Aerospace -->
+            <article class="tarjeta-empresa">
+                <span class="etiqueta-tipo">Practicas / Intern</span>
+                <figure class="contenedor-imagen">
+                    <img src="img/howmet.png" alt="Howmet Aerospace" onerror="this.src='https://placehold.co/170x105/ffffff/0f4c81?text=Howmet+Aerospace'">
+                </figure>
+                <div class="info-empresa">
+                    <h3>Howmet Aerospace</h3>
+                    <p>Programa de practicantes e intern corporativo para integracion de sistemas, manufactura y gestion de calidad.</p>
+                </div>
+                <div class="acciones-empresa">
+                    <button type="button" class="btn-alerta" onclick="lanzarAlerta('Howmet Aerospace - Programa Intern / Becarios', 'Perfil IAS:\n- Registro oficial en plataforma Oracle Cloud HCM\n- Soporte a sistemas de manufactura, calidad y administracion de datos\n- Oportunidad de practicas profesionales formales.')">
+                        Revisar Requisitos
+                    </button>
+                    <a href="https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Intern" target="_blank" rel="noopener noreferrer" class="btn-enlace">
+                        Ir al Portal Oficial
+                    </a>
+                </div>
+            </article>
+
+            <!-- Cuadro 4: Yelos -->
+            <article class="tarjeta-empresa">
+                <span class="etiqueta-tipo">Operaciones TI</span>
+                <figure class="contenedor-imagen">
+                    <img src="img/yelos.png" alt="Yelos" onerror="this.src='https://placehold.co/170x105/ffffff/0f4c81?text=Yelos'">
+                </figure>
+                <div class="info-empresa">
+                    <h3>Yelos</h3>
+                    <p>Soporte administrativo, atencion en plataformas de contacto, gestion operativa y administracion empresarial.</p>
+                </div>
+                <div class="acciones-empresa">
+                    <button type="button" class="btn-alerta" onclick="lanzarAlerta('Yelos - Contacto y Practicas Locales', 'Perfil IAS:\n- Administracion de bases de datos de clientes y pedidos\n- Seguimiento de calidad operativa y soporte administrativo\n- Ubicacion: Col. Buenos Aires, Monterrey, NL.')">
+                        Revisar Requisitos
+                    </button>
+                    <a href="https://www.yelos.com.mx/contact.php" target="_blank" rel="noopener noreferrer" class="btn-enlace">
+                        Ir al Portal Oficial
+                    </a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- Boton volver -->
+    <a href="index.html" class="btn-volver-fijo">Volver a Inicio</a>
+
+    <!-- Pie de pagina -->
+    <footer>
+        <p>Actividad Fundamental 06</p>
+    </footer>
+
+    <!-- Script de alertas nativas -->
+    <script>
+        function lanzarAlerta(empresa, detalles) {
+            alert(empresa + "\n\n" + detalles);
+        }
+    </script>
+</body>
+</html>
